@@ -3,36 +3,40 @@
 #ifndef __MSH_CFG_H__
 #define __MSH_CFG_H__
 
-// <<< Use Configuration Wizard in Context Menu >>>
+/* 开启 FinSH */
 #define RT_USING_FINSH
-#define FINSH_USING_MSH
-#define FINSH_USING_MSH_ONLY
-// <h>FinSH Configuration
-// <o>the priority of finsh thread <1-30>
-//  <i>the priority of finsh thread
-//  <i>Default: 21
-// #define FINSH_THREAD_PRIORITY       14
+
+/* 将线程名称定义为 tshell */
+#define FINSH_THREAD_NAME "tshell"
+
+/* 开启历史命令 */
+#define FINSH_USING_HISTORY
+/* 记录 5 行历史命令 */
+#define FINSH_HISTORY_LINES 5
+
+/* 开启使用 Tab 键 */
+#define FINSH_USING_SYMTAB
+/* 开启描述功能 */
+#define FINSH_USING_DESCRIPTION
+
+/* 定义 FinSH 线程优先级为  */
 #define __FINSH_THREAD_PRIORITY     5
 #define FINSH_THREAD_PRIORITY       (RT_THREAD_PRIORITY_MAX / 8 * __FINSH_THREAD_PRIORITY + 1)
 
-// <o>the stack of finsh thread <1-4096>
-//  <i>the stack of finsh thread
-//  <i>Default: 4096  (4096Byte)
+/* 定义 FinSH 线程的栈大小为  */
 #define FINSH_THREAD_STACK_SIZE     1024
 
-// #define FINSH_USING_SYMTAB
-// <c1>Enable command description
-//  <i>Enable command description
-// #define FINSH_USING_DESCRIPTION
-
-#define FINSH_USING_HISTORY
-#define FINSH_HISTORY_LINES         5
-#define FINSH_USING_SYMTAB
-#define FINSH_USING_DESCRIPTION
+/* 定义命令字符长度为 80 字节 */
 #define FINSH_CMD_SIZE 80
-//  </c>
-// </h>
 
-// <<< end of configuration section >>>
-#endif
+/* 开启 msh 功能 */
+#define FINSH_USING_MSH
+#define FINSH_USING_MSH_ONLY
+/* 最大输入参数数量为 10 个 */
+#define FINSH_ARG_MAX 3
+
+
+
+
+#endif //!__MSH_CFG_H__
 

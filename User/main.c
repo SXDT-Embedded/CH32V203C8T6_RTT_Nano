@@ -84,23 +84,7 @@ int led(void)
     }
     return 0;
 }
-MSH_CMD_EXPORT(led,  led sample by using I/O drivers);
-
-/* 复位命令 */
-long reboot(void)
-{
-    NVIC_SystemReset();
-    return 0;
-}
-FINSH_FUNCTION_EXPORT(reboot, reboot the board);
-MSH_CMD_EXPORT(reboot, reboot the board);
-
-/* clear */
-long clear(void)
-{
-    rt_kprintf("\x1b[2J\x1b[H");
-    return 0;
-}
-FINSH_FUNCTION_EXPORT(clear, the terminal screen);
-MSH_CMD_EXPORT(clear, the terminal screen);
+//MSH_CMD_EXPORT(led,  led sample by using I/O drivers);
+//也可以使用别名导出，这样函数名和命令名可以不一致
+MSH_CMD_EXPORT_ALIAS(led, test_led, display system clock info.);
 

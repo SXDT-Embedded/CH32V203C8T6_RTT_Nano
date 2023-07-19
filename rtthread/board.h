@@ -21,7 +21,7 @@
 #define ch32v20x_PIN_NUMBERS   48
 /* board configuration */
 //#define SRAM_SIZE  20
-//#define SRAM_END (0x20000000 + SRAM_SIZE * 1024)    // ½áÊøµØÖ· = 0x20000000£¨»ùÖ·£© + 20K(RAM´óÐ¡)
+//#define SRAM_END (0x20000000 + SRAM_SIZE * 1024)    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö· = 0x20000000ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ + 20K(RAMï¿½ï¿½Ð¡)
 
 //extern int __stack_size;
 //extern int _ebss;

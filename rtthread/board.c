@@ -8,7 +8,7 @@
  * 2017-07-24     Tanek        the first version
  * 2018-11-12     Ernest Chen  modify copyright
  */
- 
+
 #include "board.h"
 
 #include <stdint.h>
@@ -18,8 +18,8 @@
 #include <rtthread.h>
 
 
-// Holds the system core clock, which is the system clock 
-// frequency supplied to the SysTick timer and the processor 
+// Holds the system core clock, which is the system clock
+// frequency supplied to the SysTick timer and the processor
 // core clock.
 extern uint32_t SystemCoreClock;
 
@@ -38,8 +38,8 @@ static uint32_t _SysTick_Config(rt_uint32_t ticks)
 }
 
 #if defined(RT_USING_USER_MAIN) && defined(RT_USING_HEAP)
-// ◊Ó¥Û∂—¥Û–°ø™πÿ
-// ≤Œøº£∫https://club.rt-thread.org/ask/article/001065082e9ae611.html
+// ÊúÄÂ§ßÂ†ÜÂ§ßÂ∞èÂºÄÂÖ≥
+// ÂèÇËÄÉÔºöhttps://club.rt-thread.org/ask/article/001065082e9ae611.html
 #define USING_MAX_HEAP_SIZE 1
 
 #if  (USING_MAX_HEAP_SIZE == 0)
@@ -72,6 +72,12 @@ RT_WEAK void *rt_heap_end_get(void)
 void rt_hw_board_init()
 {
     /* System Tick Configuration */
+    // #error "TODO 1: OS Tick Configuration."
+    /*
+     * TODO 1: OS Tick Configuration
+     * Enable the hardware timer and call the rt_os_tick_callback function
+     * periodically with the frequency RT_TICK_PER_SECOND.
+     */
     _SysTick_Config(SystemCoreClock / RT_TICK_PER_SECOND);
     /* Call components board initial (use INIT_BOARD_EXPORT()) */
 #ifdef RT_USING_COMPONENTS_INIT
@@ -100,3 +106,21 @@ void SysTick_Handler(void)
     FREE_INT_SP();
 
 }
+
+/* Â§ç‰ΩçÂëΩ‰ª§ */
+long reboot(void)
+{
+    NVIC_SystemReset();
+    return 0;
+}
+//FINSH_FUNCTION_EXPORT(reboot, reboot the board);
+MSH_CMD_EXPORT(reboot, reboot the board);
+
+/* clear */
+long clear(void)
+{
+    rt_kprintf("\x1b[2J\x1b[H");
+    return 0;
+}
+//FINSH_FUNCTION_EXPORT(clear, the terminal screen);
+MSH_CMD_EXPORT(clear, the terminal screen);
